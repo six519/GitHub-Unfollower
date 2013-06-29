@@ -20,24 +20,11 @@ if __name__ == "__main__":
         exit()
 
 
-    following_users = gitUser.get_user().get_following()
-    follower_users = gitUser.get_user().get_followers()
-    following_users_list = []
-    follower_users_list = []
+    followers = [follower.id for follower in gitUser.get_user().get_followers()] 
 
-    print "Getting your following list..."
-    for following_user in following_users:
-        print "Github ID: %s and Github Name: %s" % (following_user.id, following_user.name)
-        following_users_list.append(following_user)
-
-    print "\nGetting your follower list..."
-    for follower_user in follower_users:
-        print "Github ID: %s and Github Name: %s" % (follower_user.id, follower_user.name)
-        follower_users_list.append(follower_user.id)
-    
     print "\n\n"
-    for following_user in following_users_list:
-        if following_user.id not in follower_users_list:
-            gitUser.get_user().remove_from_following(following_user)
-            print "Github user with ID: %s and Name: %s is not following you and automaticaly unfollowed by this script" % (following_user.id, following_user.name)
-
+    for following in gitUser.get_user().get_following():
+        print "Checking Github ID: %s and Github Name: %s" % (following.id, following.name)
+        if following.id not in followers:
+            gitUser.get_user().remove_from_following(following)
+            print "Github user with ID: %s and Name: %s is not following you and automaticaly unfollowed by this script" % (following.id, following.name)
