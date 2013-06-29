@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from github import Github
 from github.GithubException import GithubException
 from getpass import getpass
