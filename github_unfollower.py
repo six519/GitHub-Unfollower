@@ -30,13 +30,8 @@ if __name__ == "__main__":
 
     print "\n\n"
 
-    if followers_count != following_count:
-
-        for following in gitUser.get_user().get_following():
-            print "Checking Github ID: %s and Github Name: %s" % (following.id, following.name)
-            if following.id not in followers:
-                gitUser.get_user().remove_from_following(following)
-                print "Github user with ID: %s and Name: %s is not following you and automaticaly unfollowed by this script" % (following.id, following.name)
-
-    else:
-        print "All of them are following you... :)"
+    for following in gitUser.get_user().get_following():
+        print "Checking Github ID: %s and Github Name: %s" % (following.id, following.name)
+        if following.id not in followers:
+            gitUser.get_user().remove_from_following(following)
+            print "Github user with ID: %s and Name: %s is not following you and automaticaly unfollowed by this script" % (following.id, following.name)
