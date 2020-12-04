@@ -7,9 +7,6 @@ if __name__ == '__main__':
     gitHubPAT = getpass('Please enter your Github personal access token: ').strip()
     
     gitUser = Github(gitHubPAT)
-    
-    following_count = 0
-    followers_count = 0
 
     try:
         print('Your Github ID is: {}\nYour Github Name is: {}'.format(gitUser.get_user().id, gitUser.get_user().name))
